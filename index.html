@@ -1,0 +1,149 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+
+  <title></title>
+  <meta name="description" content="The HTML5 Herald">
+  <meta name="author" content="SitePoint">
+
+  <link rel="stylesheet" href="./leaflet/leaflet.css" />
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.10.0/css/bootstrap-select.min.css">
+  <link rel="stylesheet" href="style.css">
+  <title>WHAT DO THEY PUT IN THE WATER, ANYWAY?</TITLE>
+  <!--[if lt IE 9]>
+    <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+</head>
+
+<body>
+
+  <nav class="navbar navbar-inverse">
+      <a class="navbar-brand" href="http://brianbancroft.github.io">
+        brianbancroft.github.io
+      </a>
+  </nav>
+
+  <div class="container-fluid">
+    <div class="col-md-12">
+        <h2>Leaflet Crime Map <span class="label label-warning">LeafletJS</span> <span class="label label-success">AJAX</span> <span class="label label-info">Bootstrap</span></h2>
+      </div>
+    </div>
+
+
+
+  <div class="container">
+    <div class="col-md-11">
+      <div id="mapid"></div>
+
+
+
+      <div class="row">
+        <div class="container">
+          <div class="col-md-pull-12">
+            <div class="col-md-4">
+              <select name="carlist" form="monthform" id="choosemonth" class="selectpicker">
+                <option value="01">January</option>
+                <option value="02">February</option>
+                <option value="03">March</option>
+                <option value="04">April</option>
+                <option value="05">May</option>
+                <option value="06">June</option>
+                <option value="07">July</option>
+                <option value="08">August</option>
+                <option value="09">September</option>
+                <option value="10">October</option>
+                <option value="11">November</option>
+                <option value="12">December</option>
+              </select>
+            </div>
+            <div class="col-md-4">
+              <select name="carlist" form="yearform" id="chooseyear" class="selectpicker">
+                <option value="2011">2011</option>
+                <option value="2012">2012</option>
+                <option value="2013">2013</option>
+                <option value="2014">2014</option>
+                <option value="2015">2015</option>
+              </select>
+            </div>
+            <div class="col-md-4">
+              <select name="crimelist" form="crimeform" id="choosecrime" class="selectpicker">
+                <option value="all">All crimes</option>
+                <option value="anti-social-behaviour">Antisocial Behaviour</option>
+                <option value="burglary">Burglary</option>
+                <option value="criminal-damage-arson">Arson</option>
+                <option value="drugs">Drugs</option>
+                <option value="other-theft">Thefts</option>
+                <option value="public-disorder-weapons">The guy's got a gun!</option>
+                <option value="robbery">Robbery</option>
+                <option value="shoplifting">Shoplifting</option>
+                <option value="vehicle-crime">Vehicle Crimes</option>
+                <option value="violent-crime">Violent Crimes</option>
+                <option value="other-crime">Other Crimes</option>
+              </select>
+            </div>
+            </div>
+          </div>
+        </div>
+        <hr>
+        <div id="intro-row">
+          <ul class="list-group list-inline">
+            <div class="col-md-3">
+              <li class="list-group-item">Select a month,</li>
+            </div>
+            <div class="col-md-3">
+              <li class="list-group-item">Select a year,</li>
+            </div>
+            <div class="col-md-3">
+              <li class="list-group-item">Select a crime; then,</li>
+            </div>
+            <div class="col-md-3">
+              <li class="list-group-item">Double-click on the map!</li>
+            </div>
+          </ul>
+        </div>
+        <div id="crime-stats-row">
+          <ul class="list-group list-inline">
+            <div class="col-md-6">
+              <strong>
+                <li class="list-group-item text-right" id="crime-category-summary">
+                </li>
+            </strong>
+            </div>
+            <div class="col-md-3 text-right">
+              <li class="list-group-item text-left" id="crime-category-count">
+              </li>
+            </div>
+            <div class="col-md-3">
+              <li class="list-group-item text-center" id="total-crimes">
+              </li>
+            </div>
+
+          </ul>
+        </div>
+      </div>
+    </div>
+
+<script id="resultTemplate" type="text/x-handlebars-template">
+    <li data-product-id="{{id}}">
+      <div class="row">
+        <h2> {{category }}</h2>
+        <div class="product-info col-xs-10">
+          <p><strong>Outcome Status: </strong>{{outcome_status.category}}</p>
+          <p><strong>Location Type: </strong>{{location_type}}</p>
+        </div>
+      </div>
+    </li>
+  </script>
+
+  <script src="./leaflet/leaflet.js"></script>
+  <script src="https://code.jquery.com/jquery-2.2.3.min.js"   integrity="sha256-a23g1Nt4dtEYOj7bR+vTu7+T8VP13humZFBJNIYoEJo="   crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.5/handlebars.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.10.0/js/bootstrap-select.min.js"></script>
+  <script src="script.js"></script>
+
+</body>
+</html>
